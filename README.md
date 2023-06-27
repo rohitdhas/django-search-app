@@ -46,10 +46,3 @@
    ```
 
 7. Open your web browser and visit `http://localhost:8000` to access the application.
-
-## Usage
-
-1. Enter a search query in the search field to find restaurants that offer specific menu items.
-2. Use the location dropdown to filter the results by location.
-3. Click the "Search" button to perform the search.
-4. The search results will be displayed, showing the names of the restaurants that match the search criteria.
