@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;800;900&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.flex-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Input Container Starts */
+.input-container {
+  width: 500px;
+  padding: 20px 0;
+  border-bottom: 2px solid lightgray;
+}
+
+.input-container form {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-container form input[type="text"] {
+  width: 91%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.input-container form input[type="submit"],
+select {
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.input-container form input[type="submit"] {
+  border: none;
+  outline: none;
+  background-color: rgb(89, 227, 89);
+  color: white;
+  font-weight: bold;
+}
+
+.input-container form input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: rgb(30, 159, 30);
+}
+
+/* Input Container Ends */
+
+/* Result Container */
+
+.result-list, .result-list li {
+  list-style: none;
+}
+
+.result-list .restaurant-menu ul li {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(224, 255, 224);
+  cursor: pointer;
+}
+
+.result-list .restaurant-menu ul li:hover {
+  background-color: rgb(173, 247, 173);
+}
+
+.result-list .restaurant-menu p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: gray;
+  text-decoration: underline;
+}
+
+.result-list .restaurant-menu ul li .icon {
+  font-size: 2rem;
+  opacity: .7;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.result-list .restaurant-menu ul li .item-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.result-list .restaurant-menu ul li .item-details .title {
+  font-weight: bold;
+  color: rgb(42, 50, 42);
+}
+
+.result-list .restaurant-menu ul li .item-details .price {
+  font-size: .8rem;
+  color: rgb(79, 80, 79);
+}

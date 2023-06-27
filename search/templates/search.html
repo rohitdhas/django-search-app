@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dish Search</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="main-container flex-column">
+      <h1>🍲 Dish Search</h1>
+      <div class="input-container">
+        <form action="" method="GET">
+          <input
+          type="text"
+          name="q"
+          placeholder="Search for a dish"
+          value="{{ request.GET.q }}"
+          />
+          <select name="location">
+            {% if location %}
+              <option value="{{ location }}">{{ location }}</option>
+            {% else %}
+              <option value="">Select a location</option>
+            {% endif %}
+            {% for location in location_list%}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+      <div class="result-container">
+        {% if query %}
+          {% if location %}
+            {% if results %}
+              <h3>🔍️ Search Results for: {{ query }} (📍{{ location }})</h3>
+              <p>✨ Showing best matches</p>
+              <ul class="result-list">
+                  {% for restaurant in results %}
+                  <li class="restaurant-menu">
+                      <p>🍽️ {{ restaurant.name }}</p>
+                      <ul>
+                        {% for menu_item in restaurant.menu %}
+                          {% for item, price in menu_item.items %}
+                            <li class="menu-item">
+                              <div class="icon">🥘</div>
+                              <div class="item-details">
+                                <span class="title">{{ item }}</span>
+                                <span class="price">
+                                  ₹{{ price }}
+                                </span>
+                              </div>
+                            </li>
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  {% endfor %}
+              </ul>
+            {% elif relevant_results %}
+            <h3>🔍️ Search Results for: {{ query }} (📍{{ location }})</h3>
+            <p>📌 No best matches found. Showing relevent results</p>
+            <ul class="result-list">
+                {% for restaurant in relevant_results %}
+                <li class="restaurant-menu">
+                  <p>🍽️ {{ restaurant.name }}</p>
+                  <ul>
+                    {% for menu_item in restaurant.menu %}
+                      {% for item, price in menu_item.items %}
+                        <li class="menu-item">
+                          <div class="icon">🥘</div>
+                          <div class="item-details">
+                            <span class="title">{{ item }}</span>
+                            <span class="price">
+                              ₹{{ price }}
+                            </span>
+                          </div>
+                        </li>
+                      {% endfor %}
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+              <p>😕 No results found for the selected location</p>
+            {% endif %}
+          {% else %}
+            <p>📍 Please select a location</p>
+          {% endif %}
+        {% else %}
+          <p>🔍️ Search for restaurants, dishes, etc.</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
